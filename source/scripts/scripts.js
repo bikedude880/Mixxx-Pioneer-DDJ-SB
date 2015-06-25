@@ -156,26 +156,6 @@ PioneerDDJSB.HotCuePerformancePadLed = function(value, group, control)
 	midi.sendShortMsg(0x97 + channel, 0x00 + padIndex + 0x08, value ? 0x7F : 0x00);
 };
 
-// Set the VU meter levels.
-PioneerDDJSB.vuMeter = function(value, group, control) 
-{
-	// VU meter range is 0 to 127 (or 0x7F).
-	var level = parseInt(value * 0x7F);
-	
-	var channel = null;
-	switch (group)
-	{
-		case '[Channel1]': 
-			channel = 0xB0;
-			break;
-		case '[Channel2]': 
-			channel = 0xB1;
-			break;
-	}
-	
-	midi.sendShortMsg(channel, 0x02, level);
-}
-
 // Work out the jog-wheel change / delta
 PioneerDDJSB.getJogWheelDelta = function(value)
 {
@@ -412,10 +392,5 @@ PioneerDDJSB.RotarySelectorClick = function(channel, control, value, status)
 PioneerDDJSB.shutdown = function()
 {
 	PioneerDDJSB.BindControlConnections(true);
-	
-	// Reset the VU meters so that we're not left with
-	// it displaying something when nothing is playing.
-	PioneerDDJSB.vuMeter(0, '[Channel1]', 'VuMeter');
-	PioneerDDJSB.vuMeter(0, '[Channel2]', 'VuMeter');
 };
 
