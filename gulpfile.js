@@ -5,11 +5,11 @@ var rename = require('gulp-rename');
 
 var settings =
 {
-	functionPrefix: 'PioneerDDJSR',
-	filePrefix: 'PIONEER_DDJ-SR',
-	name: 'Pioneer DDJ-SR',
-	author: 'Hilton Rudham &lt;hiltonrudham@gmail.com&gt;',
-	description: 'Pioneer DDJ-SR configuration for 2 decks on midi channels 1 and 2'
+	functionPrefix: 'PioneerDDJSB',
+	filePrefix: 'PIONEER_DDJ-SB',
+	name: 'Pioneer DDJ-SB',
+	author: 'Hilton Rudham &lt;hiltonrudham@gmail.com&gt; &amp;Daniel Penney
+	description: 'Pioneer DDJ-SB configuration for 2 decks on midi channels 1 and 2'
 };
 
 gulp.task(
