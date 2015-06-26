@@ -349,7 +349,14 @@ PioneerDDJSB.RotarySelector = function(channel, control, value, status)
 	switch(PioneerDDJSB.status.rotarySelector.target)
 	{
 		case tracklist:
-			engine.setValue('[Playlist]', 'SelectTrackKnob', delta/8);
+			if (value >= 0x01 && value <= 0x1e) {
+				value = value;
+			} else if (value >= 0x62 && value <= 0x7f) {
+				value = 0 - (0x7f-value+1);
+			} else {
+				return;
+			}
+			engine.setValue('[Playlist]', 'SelectTrackKnob', value);
 			break;
 		case libraries:
 			if (delta > 0)
