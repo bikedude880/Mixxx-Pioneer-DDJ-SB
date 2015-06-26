@@ -20,6 +20,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -87,15 +96,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -204,15 +204,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -659,6 +650,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -726,15 +726,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -843,15 +834,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -1298,6 +1280,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -1365,15 +1356,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -1482,15 +1464,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -1937,6 +1910,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -2004,15 +1986,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -2121,15 +2094,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -2576,6 +2540,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -2643,15 +2616,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -2760,15 +2724,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -3215,6 +3170,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -3282,15 +3246,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -3399,15 +3354,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -3854,6 +3800,15 @@
 				</options>
 			</control>
 			<control>
+				<group>[Master]</group>
+				<key>headMix</key>
+				<status>0xB6</status>
+				<midino>0x05</midino>
+				<options>
+					<soft-takeover />
+				</options>
+			</control>
+			<control>
 				<group>[Playlist]</group>
 				<key>PioneerDDJSB.RotarySelectorClick</key>
 				<status>0x96</status>
@@ -3921,15 +3876,6 @@
 				<key>start</key>
 				<status>0x90</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel1]</group>
-				<key>slip_enabled</key>
-				<status>0x90</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
@@ -4038,15 +3984,6 @@
 				<key>start</key>
 				<status>0x91</status>
 				<midino>0x48</midino>
-				<options>
-					<normal />
-				</options>
-			</control>
-			<control>
-				<group>[Channel2]</group>
-				<key>slip_enabled</key>
-				<status>0x91</status>
-				<midino>0x4E</midino>
 				<options>
 					<normal />
 				</options>
