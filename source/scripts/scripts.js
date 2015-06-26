@@ -119,7 +119,7 @@ PioneerDDJSB.RollPerformancePadLed = function(value, group, control)
 	var channel = PioneerDDJSB.enumerations.channelGroups[group];
 	
 	var padIndex = 0;
-	for (var i = 0; i < 4; i++)
+	for (var i = 0; i < 8; i++)
 	{
 		if (control === 'beatloop_' + PioneerDDJSB.settings.loopIntervals[i + 2] + '_enabled')
 		{
@@ -349,7 +349,7 @@ PioneerDDJSB.RotarySelector = function(channel, control, value, status)
 	switch(PioneerDDJSB.status.rotarySelector.target)
 	{
 		case tracklist:
-			engine.setValue('[Playlist]', 'SelectTrackKnob', delta);
+			engine.setValue('[Playlist]', 'SelectTrackKnob', delta/8);
 			break;
 		case libraries:
 			if (delta > 0)
