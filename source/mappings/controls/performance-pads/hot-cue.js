@@ -8,8 +8,8 @@ for (var channelIndex = 0; channelIndex < 2; channelIndex++)
 	{
 		var activateKey = 'hotcue_' + (channelIndex + 1) + '_activate';
 		var clearKey = 'hotcue_' + (channelIndex + 1) + '_clear';
-		manager.add(group, activateKey, 0x9p + channelIndex, 0x00 + padIndex);
-		manager.add(group, clearKey, 0x9p + channelIndex, 0x08 + padIndex);
+		manager.add(group, activateKey, 0x97 + channelIndex, 0x00 + padIndex);
+		manager.add(group, clearKey, 0x97 + channelIndex, 0x08 + padIndex);
 	}
 }
 

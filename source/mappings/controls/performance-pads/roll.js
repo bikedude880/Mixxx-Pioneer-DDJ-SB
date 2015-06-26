@@ -6,7 +6,7 @@ for (var channelIndex = 0; channelIndex < 2; channelIndex++)
 
 	for (var padIndex = 0; padIndex < 4; padIndex++)
 	{
-		manager.add(group, 'PioneerDDJSB.RollPerformancePad', 0x9p + channelIndex, 0x50 + padIndex);
+		manager.add(group, 'PioneerDDJSB.RollPerformancePad', 0x97 + channelIndex, 0x50 + padIndex);
 	}
 }
 

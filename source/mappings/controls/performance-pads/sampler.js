@@ -7,7 +7,7 @@ for (var channelIndex = 0; channelIndex < 2; channelIndex++)
 	for (var padIndex = 0; padIndex < 4; padIndex++)
 	{
 		var group = 'Sampler' + (padIndex + 1);
-		manager.add(group, 'start_play', 0x9p + channelIndex, 0x30 + padIndex);
+		manager.add(group, 'start_play', 0x97 + channelIndex, 0x30 + padIndex);
 	}	
 }
 

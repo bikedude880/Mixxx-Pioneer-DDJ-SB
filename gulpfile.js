@@ -8,7 +8,7 @@ var settings =
 	functionPrefix: 'PioneerDDJSB',
 	filePrefix: 'PIONEER_DDJ-SB',
 	name: 'Pioneer DDJ-SB',
-	author: 'Hilton Rudham &lt;hiltonrudham@gmail.com&gt; &amp;Daniel Penney
+	author: 'Hilton Rudham &lt;hiltonrudham@gmail.com&gt;',
 	description: 'Pioneer DDJ-SB configuration for 2 decks on midi channels 1 and 2'
 };
 
