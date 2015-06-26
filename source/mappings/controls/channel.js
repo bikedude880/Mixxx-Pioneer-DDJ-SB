@@ -9,7 +9,8 @@ for (var channelIndex = 0; channelIndex < 2; channelIndex++)
 	manager.add(group, 'pfl', 0x90 + channelIndex, 0x54);
 	manager.add(group, 'keylock', 0x90 + channelIndex, 0x1A);
 	manager.add(group, 'beatsync', 0x90 + channelIndex, 0x58);
-	manager.add(group, 'cue_default', 0x90 + channelIndex, 0x0C);	
+	manager.add(group, 'cue_default', 0x90 + channelIndex, 0x0C);
+	manager.add(group, 'start', 0x90 + channelIndex, 0x48);
 	
 	// TODO: Fix this.
 	manager.add(group, 'LoadSelectedTrack', 0x96, 0x46 + channelIndex);
