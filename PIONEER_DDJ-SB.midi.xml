@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<MixxxMIDIPreset schemaVersion="1" mixxxVersion="1.11.0+">
+  <info>
+    <name>Pioneer DDJ SB</name>
+    <author>Daniel Penney &lt;bikedude880@gmail.com&gt;</author>
+    <description>Pioneer DDJ SB configuration for 2 decks on midi channels 1 and 2</description>
+  </info>
+  <controller id="PIONEER DDH SB" port="">
+    <scriptfiles>
+      <file functionprefix="PioneerDDJSB" filename="PIONEER_DDJ-SB-scripts.js"/>
+    </scriptfiles>
+    <controls>
+      <!-- MIXER -->
+      <control>
+        <!-- Crossfader -->
+        <group>[Master]</group>
+        <key>crossfader</key>
+        <status>0xB6</status>
+        <midino>0x1F</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Headphones Mix -->
+        <group>[Master]</group>
+        <key>headMix</key>
+        <status>0xB6</status>
+        <midino>0x05</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <!-- BROWSER -->
+      <control>
+        <!-- Browse Knob Rotate -->
+        <group>[Playlist]</group>
+        <key>PioneerDDJSB.RotarySelector</key>
+        <status>0xB6</status>
+        <midino>0x40</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Browse Knob Click -->
+        <group>[Playlist]</group>
+        <key>PioneerDDJSB.RotarySelectorClick</key>
+        <status>0x96</status>
+        <midino>0x41</midino>
+        <options> <script-binding/> </options>
+      </control>
+    </controls>
+  </controller>
+</MixxxMIDIPreset>
