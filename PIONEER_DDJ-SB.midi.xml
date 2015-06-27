@@ -27,7 +27,6 @@
         <midino>0x05</midino>
         <options> <soft-takeover/> </options>
       </control>
-
       <!-- BROWSER -->
       <control>
         <!-- Browse Knob Rotate -->
@@ -61,7 +60,6 @@
         <midino>0x47</midino>
         <options> <normal/> </options>
       </control>
-
       <!-- DECK 1 -->
       <control>
         <!-- Play/Pause -->
@@ -74,7 +72,7 @@
       <control>
         <!-- Cue -->
         <group>[Channel1]</group>
-        <key>cue_default<key>
+        <key>cue_default</key>
         <status>0x90</status>
         <midino>0x0C</midino>
         <options> <normal/> </options>
@@ -95,7 +93,6 @@
         <midino>0x48</midino>
         <options> <normal/> </options>
       </control>
-
     </controls>
   </controller>
 </MixxxMIDIPreset>
