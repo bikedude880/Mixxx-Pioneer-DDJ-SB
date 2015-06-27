@@ -109,6 +109,46 @@
         <midino>0x54</midino>
         <options> <normal/> </options>
       </control>
+      <control>
+        <!-- Tempo Slider -->
+        <group>[Channel1]</group>
+        <key>rate</key>
+        <status>0xB0</status>
+        <midino>0x00</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Channel Fader -->
+        <group>[Channel1]</group>
+        <key>volume</key>
+        <status>0xB0</status>
+        <midino>0x13</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ High -->
+        <group>[Channel1]</group>
+        <key>filterHigh</key>
+        <status>0xB0</status>
+        <midino>0x07</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ Mid -->
+        <group>[Channel1]</group>
+        <key>filterMid</key>
+        <status>0xB0</status>
+        <midino>0x0B</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ Low -->
+        <group>[Channel1]</group>
+        <key>filterLow</key>
+        <status>0xB0</status>
+        <midino>0x0F</midino>
+        <options> <soft-takeover/> </options>
+      </control>
     </controls>
   </controller>
 </MixxxMIDIPreset>
