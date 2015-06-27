@@ -93,6 +93,22 @@
         <midino>0x48</midino>
         <options> <normal/> </options>
       </control>
+      <control>
+        <!-- Keylock -->
+        <group>[Channel1]</group>
+        <key>keylock</key>
+        <status>0x90</status>
+        <midino>0x1A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Cue PFL -->
+        <group>[Channel1]</group>
+        <key>pfl</key>
+        <status>0x90</status>
+        <midino>0x54</midino>
+        <options> <normal/> </options>
+      </control>
     </controls>
   </controller>
 </MixxxMIDIPreset>
