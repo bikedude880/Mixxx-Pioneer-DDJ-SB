@@ -118,6 +118,14 @@
         <options> <normal/> </options>
       </control>
       <control>
+        <!-- Slip Mode -->
+        <group>[Channel1]</group>
+        <key>slip_enabled</key>
+        <status>0x90</status>
+        <midino>0x17</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
         <!-- Tempo Slider -->
         <group>[Channel1]</group>
         <key>rate</key>
@@ -164,6 +172,14 @@
         <status>0xB6</status>
         <midino>0x17</midino>
         <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Wheel Side) -->
+        <group>[Channel1]</group>
+        <key>PioneerDDJSB.JogWheelSide</key>
+        <status>0xB0</status>
+        <midino>0x21</midino>
+        <options> <script-binding/> </options>
       </control>
     </controls>
   </controller>

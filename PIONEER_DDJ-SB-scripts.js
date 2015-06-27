@@ -3,6 +3,8 @@ function PioneerDDJSB() {}
 PioneerDDJSB.init = function(id) {}
 PioneerDDJSB.shutdown = function(id) {}
 
+PioneerDDJSB.offset = 0x40
+
 // Handles the track selection rotation, lifted from CDJ-850
 PioneerDDJSB.RotarySelector = function(channel, control, value, status)
 {
@@ -14,4 +16,10 @@ PioneerDDJSB.RotarySelector = function(channel, control, value, status)
 		return;
 	}
 	engine.setValue('[Playlist]','SelectTrackKnob',value);
+}
+
+PioneerDDJSB.JogWheelSide = function(channel, control, value, status, group)
+{
+	var delta = (value - PioneerDDJB.offset)
+	engine.setValue(group,'jog',delta)
 }
