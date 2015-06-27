@@ -27,6 +27,7 @@
         <midino>0x05</midino>
         <options> <soft-takeover/> </options>
       </control>
+
       <!-- BROWSER -->
       <control>
         <!-- Browse Knob Rotate -->
@@ -44,6 +45,57 @@
         <midino>0x41</midino>
         <options> <script-binding/> </options>
       </control>
+      <control>
+        <!-- Load Deck 1 -->
+        <group>[Channel1]</group>
+        <key>LoadSelectedTrack</key>
+        <status>0x96</status>
+        <midino>0x46</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Load Deck 2 -->
+        <group>[Channel2]</group>
+        <key>LoadSelectedTrack</key>
+        <status>0x96</status>
+        <midino>0x47</midino>
+        <options> <normal/> </options>
+      </control>
+
+      <!-- DECK 1 -->
+      <control>
+        <!-- Play/Pause -->
+        <group>[Channel1]</group>
+        <key>play</key>
+        <status>0x90</status>
+        <midino>0x0B</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Cue -->
+        <group>[Channel1]</group>
+        <key>cue_default<key>
+        <status>0x90</status>
+        <midino>0x0C</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Sync -->
+        <group>[Channel1]</group>
+        <key>beatsync</key>
+        <status>0x90</status>
+        <midino>0x58</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- To Start of Track -->
+        <group>[Channel1]</group>
+        <key>start</key>
+        <status>0x90</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+
     </controls>
   </controller>
 </MixxxMIDIPreset>
