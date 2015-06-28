@@ -176,9 +176,41 @@
       <control>
         <!-- Jog Dial (Wheel Side) -->
         <group>[Channel1]</group>
-        <key>PioneerDDJSB.JogWheelSide</key>
+        <key>PioneerDDJSB.jogPitchBend</key>
         <status>0xB0</status>
         <midino>0x21</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Rotate vOff) -->
+        <group>[Channel1]</group>
+        <key>PioneerDDJSB.jogSeekTurn</key>
+        <status>0xB0</status>
+        <midino>0x23</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Rotate vOn) -->
+        <group>[Channel1]</group>
+        <key>PioneerDDJSB.jogScratchTurn</key>
+        <status>0xB0</status>
+        <midino>0x22</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Touch vOff) -->
+        <group>[Channel1]</group>
+        <key>PioneerDDJSB.jogSeekTouch</key>
+        <status>0x90</status>
+        <midino>0x35</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Touch vOn) -->
+        <group>[Channel1]</group>
+        <key>PioneerDDJSB.jogScratchTouch</key>
+        <status>0x90</status>
+        <midino>0x36</midino>
         <options> <script-binding/> </options>
       </control>
     </controls>
