@@ -342,6 +342,80 @@
         <midino>0x4B</midino>
         <options> <normal/> </options>
       </control>
+      <!-- MANUAL LOOP -->
+      <control>
+        <!-- Loop In -->
+        <group>[Channel1]</group>
+        <key>loop_in</key>
+        <status>0x97</status>
+        <midino>0x20</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop Out -->
+        <group>[Channel1]</group>
+        <key>loop_out</key>
+        <status>0x97</status>
+        <midino>0x21</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop Exit -->
+        <group>[Channel1]</group>
+        <key>reloop_exit</key>
+        <status>0x97</status>
+        <midino>0x22</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop 1/2 -->
+        <group>[Channel1]</group>
+        <key>loop_halve</key>
+        <status>0x97</status>
+        <midino>0x23</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop x2 -->
+        <group>[Channel1]</group>
+        <key>loop_double</key>
+        <status>0x97</status>
+        <midino>0x2B</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- AUTO LOOP (Quick Toggles) -->
+      <control>
+        <!-- 1 Beat Toggle -->
+        <group>[Channel1]</group>
+        <key>beatloop_1_toggle</key>
+        <status>0x97</status>
+        <midino>0x10</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 2 Beat Toggle -->
+        <group>[Channel1]</group>
+        <key>beatloop_2_toggle</key>
+        <status>0x97</status>
+        <midino>0x11</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 4 Beat Toggle -->
+        <group>[Channel1]</group>
+        <key>beatloop_4_toggle</key>
+        <status>0x97</status>
+        <midino>0x12</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 8 Beat Toggle -->
+        <group>[Channel1]</group>
+        <key>beatloop_8_toggle</key>
+        <status>0x97</status>
+        <midino>0x13</midino>
+        <options> <normal/> </options>
+      </control>
     </controls>
   </controller>
 </MixxxMIDIPreset>
