@@ -5,7 +5,7 @@
     <author>Daniel Penney &lt;bikedude880@gmail.com&gt;</author>
     <description>Pioneer DDJ SB configuration for 2 decks on midi channels 1 and 2</description>
   </info>
-  <controller id="PIONEER DDH SB" port="">
+  <controller id="PIONEER DDJ SB" port="">
     <scriptfiles>
       <file functionprefix="PioneerDDJSB" filename="PIONEER_DDJ-SB-scripts.js"/>
     </scriptfiles>
@@ -276,6 +276,70 @@
         <key>hotcue_4_clear</key>
         <status>0x97</status>
         <midino>0x0B</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 5 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_5_activate</key>
+        <status>0x97</status>
+        <midino>0x40</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 5 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_5_clear</key>
+        <status>0x97</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 6 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_6_activate</key>
+        <status>0x97</status>
+        <midino>0x41</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 6 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_6_clear</key>
+        <status>0x97</status>
+        <midino>0x49</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 7 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_7_activate</key>
+        <status>0x97</status>
+        <midino>0x42</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 7 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_7_clear</key>
+        <status>0x97</status>
+        <midino>0x4A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 8 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_8_activate</key>
+        <status>0x97</status>
+        <midino>0x43</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 8 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_8_clear</key>
+        <status>0x97</status>
+        <midino>0x4B</midino>
         <options> <normal/> </options>
       </control>
     </controls>
