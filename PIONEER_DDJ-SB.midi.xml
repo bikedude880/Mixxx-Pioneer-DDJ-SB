@@ -213,6 +213,71 @@
         <midino>0x36</midino>
         <options> <script-binding/> </options>
       </control>
+      <!-- HOT CUE Deck 1 -->
+      <control>
+        <!-- Hotcue 1 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_1_activate</key>
+        <status>0x97</status>
+        <midino>0x00</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 1 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_1_clear</key>
+        <status>0x97</status>
+        <midino>0x08</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 2 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_2_activate</key>
+        <status>0x97</status>
+        <midino>0x01</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 2 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_2_clear</key>
+        <status>0x97</status>
+        <midino>0x09</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 3 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_3_activate</key>
+        <status>0x97</status>
+        <midino>0x02</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 3 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_3_clear</key>
+        <status>0x97</status>
+        <midino>0x0A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 4 Set -->
+        <group>[Channel1]</group>
+        <key>hotcue_4_activate</key>
+        <status>0x97</status>
+        <midino>0x03</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 4 Clear -->
+        <group>[Channel1]</group>
+        <key>hotcue_4_clear</key>
+        <status>0x97</status>
+        <midino>0x0B</midino>
+        <options> <normal/> </options>
+      </control>
     </controls>
   </controller>
 </MixxxMIDIPreset>
