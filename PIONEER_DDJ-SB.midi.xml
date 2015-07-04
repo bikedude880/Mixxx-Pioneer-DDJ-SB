@@ -475,6 +475,421 @@
         <midino>0x53</midino>
         <options> <normal/> </options>
       </control>
+      <!-- DECK 2 -->
+      <control>
+        <!-- Play/Pause -->
+        <group>[Channel2]</group>
+        <key>play</key>
+        <status>0x91</status>
+        <midino>0x0B</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Cue -->
+        <group>[Channel2]</group>
+        <key>cue_default</key>
+        <status>0x91</status>
+        <midino>0x0C</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Sync -->
+        <group>[Channel2]</group>
+        <key>beatsync</key>
+        <status>0x91</status>
+        <midino>0x58</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- To Start of Track -->
+        <group>[Channel2]</group>
+        <key>start</key>
+        <status>0x91</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Keylock -->
+        <group>[Channel2]</group>
+        <key>keylock</key>
+        <status>0x91</status>
+        <midino>0x1A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Quantize -->
+        <group>[Channel2]</group>
+        <key>quantize</key>
+        <status>0x91</status>
+        <midino>0x5C</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Cue PFL -->
+        <group>[Channel2]</group>
+        <key>pfl</key>
+        <status>0x91</status>
+        <midino>0x54</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Slip Mode -->
+        <group>[Channel2]</group>
+        <key>slip_enabled</key>
+        <status>0x91</status>
+        <midino>0x17</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Tempo Slider -->
+        <group>[Channel2]</group>
+        <key>rate</key>
+        <status>0xB1</status>
+        <midino>0x00</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Channel Fader -->
+        <group>[Channel2]</group>
+        <key>volume</key>
+        <status>0xB1</status>
+        <midino>0x13</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ High -->
+        <group>[Channel2]</group>
+        <key>filterHigh</key>
+        <status>0xB1</status>
+        <midino>0x07</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ Mid -->
+        <group>[Channel2]</group>
+        <key>filterMid</key>
+        <status>0xB1</status>
+        <midino>0x0B</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- EQ Low -->
+        <group>[Channel2]</group>
+        <key>filterLow</key>
+        <status>0xB1</status>
+        <midino>0x0F</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <!-- Effects buttons and knobs -->
+      <control>
+        <!-- HPF/LPF for Effect 2 Super Knob -->
+        <group>[EffectRack1_EffectUnit2]</group>
+        <key>super1</key>
+        <status>0xB6</status>
+        <midino>0x18</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Channel2 Effect Unit 2 -->
+        <group>[EffectRack1_EffectUnit2]</group>
+        <key>group_[Channel2]_enable</key>
+        <status>0x95</status>
+        <midino>0x47</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Channel2 Effect Unit 3 -->
+        <group>[EffectRack1_EffectUnit3]</group>
+        <key>group_[Channel2]_enable</key>
+        <status>0x95</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Channel2 Effect Unit 4 -->
+        <group>[EffectRack1_EffectUnit4]</group>
+        <key>group_[Channel2]_enable</key>
+        <status>0x95</status>
+        <midino>0x49</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- Jog Wheel/Platter -->
+      <control>
+        <!-- Jog Dial (Wheel Side) -->
+        <group>[Channel2]</group>
+        <key>PioneerDDJSB.jogPitchBend</key>
+        <status>0xB1</status>
+        <midino>0x21</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Rotate vOff) -->
+        <group>[Channel2]</group>
+        <key>PioneerDDJSB.jogSeekTurn</key>
+        <status>0xB1</status>
+        <midino>0x23</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Rotate vOn) -->
+        <group>[Channel2]</group>
+        <key>PioneerDDJSB.jogScratchTurn</key>
+        <status>0xB1</status>
+        <midino>0x22</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Touch vOff) -->
+        <group>[Channel2]</group>
+        <key>PioneerDDJSB.jogSeekTouch</key>
+        <status>0x91</status>
+        <midino>0x35</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <control>
+        <!-- Jog Dial (Platter Touch vOn) -->
+        <group>[Channel2]</group>
+        <key>PioneerDDJSB.jogScratchTouch</key>
+        <status>0x91</status>
+        <midino>0x36</midino>
+        <options> <script-binding/> </options>
+      </control>
+      <!-- HOT CUE Deck 2 -->
+      <control>
+        <!-- Hotcue 1 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_1_activate</key>
+        <status>0x98</status>
+        <midino>0x00</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 1 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_1_clear</key>
+        <status>0x98</status>
+        <midino>0x08</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 2 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_2_activate</key>
+        <status>0x98</status>
+        <midino>0x01</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 2 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_2_clear</key>
+        <status>0x98</status>
+        <midino>0x09</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 3 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_3_activate</key>
+        <status>0x98</status>
+        <midino>0x02</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 3 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_3_clear</key>
+        <status>0x98</status>
+        <midino>0x0A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 4 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_4_activate</key>
+        <status>0x98</status>
+        <midino>0x03</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 4 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_4_clear</key>
+        <status>0x98</status>
+        <midino>0x0B</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 5 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_5_activate</key>
+        <status>0x98</status>
+        <midino>0x40</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 5 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_5_clear</key>
+        <status>0x98</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 6 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_6_activate</key>
+        <status>0x98</status>
+        <midino>0x41</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 6 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_6_clear</key>
+        <status>0x98</status>
+        <midino>0x49</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 7 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_7_activate</key>
+        <status>0x98</status>
+        <midino>0x42</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 7 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_7_clear</key>
+        <status>0x98</status>
+        <midino>0x4A</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 8 Set -->
+        <group>[Channel2]</group>
+        <key>hotcue_8_activate</key>
+        <status>0x98</status>
+        <midino>0x43</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Hotcue 8 Clear -->
+        <group>[Channel2]</group>
+        <key>hotcue_8_clear</key>
+        <status>0x98</status>
+        <midino>0x4B</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- MANUAL LOOP -->
+      <control>
+        <!-- Loop In -->
+        <group>[Channel2]</group>
+        <key>loop_in</key>
+        <status>0x98</status>
+        <midino>0x20</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop Out -->
+        <group>[Channel2]</group>
+        <key>loop_out</key>
+        <status>0x98</status>
+        <midino>0x21</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop Exit -->
+        <group>[Channel2]</group>
+        <key>reloop_exit</key>
+        <status>0x98</status>
+        <midino>0x22</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop 1/2 -->
+        <group>[Channel2]</group>
+        <key>loop_halve</key>
+        <status>0x98</status>
+        <midino>0x23</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Loop x2 -->
+        <group>[Channel2]</group>
+        <key>loop_double</key>
+        <status>0x98</status>
+        <midino>0x2B</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- AUTO LOOP (Quick Toggles) -->
+      <control>
+        <!-- 1 Beat Toggle -->
+        <group>[Channel2]</group>
+        <key>beatloop_1_toggle</key>
+        <status>0x98</status>
+        <midino>0x10</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 2 Beat Toggle -->
+        <group>[Channel2]</group>
+        <key>beatloop_2_toggle</key>
+        <status>0x98</status>
+        <midino>0x11</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 4 Beat Toggle -->
+        <group>[Channel2]</group>
+        <key>beatloop_4_toggle</key>
+        <status>0x98</status>
+        <midino>0x12</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 8 Beat Toggle -->
+        <group>[Channel2]</group>
+        <key>beatloop_8_toggle</key>
+        <status>0x98</status>
+        <midino>0x13</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- ROLL for Beatloop -->
+      <control>
+        <!-- 1/8 Beat Roll -->
+        <group>[Channel2]</group>
+        <key>beatlooproll_0.125_activate</key>
+        <status>0x98</status>
+        <midino>0x50</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1/4 Beat Roll -->
+        <group>[Channel2]</group>
+        <key>beatlooproll_0.25_activate</key>
+        <status>0x98</status>
+        <midino>0x51</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1/2 Beat Roll -->
+        <group>[Channel2]</group>
+        <key>beatlooproll_0.5_activate</key>
+        <status>0x98</status>
+        <midino>0x52</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1 Beat Roll -->
+        <group>[Channel2]</group>
+        <key>beatlooproll_1_activate</key>
+        <status>0x98</status>
+        <midino>0x53</midino>
+        <options> <normal/> </options>
+      </control>
     </controls>
   </controller>
 </MixxxMIDIPreset>
