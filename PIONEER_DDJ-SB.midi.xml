@@ -165,14 +165,40 @@
         <midino>0x0F</midino>
         <options> <soft-takeover/> </options>
       </control>
+      <!-- Effects buttons and knobs -->
       <control>
-        <!-- HPF/LPF for GAIN -->
-        <group>[Channel1]</group>
-        <key>pregain</key>
+        <!-- HPF/LPF for Effect 1 Super Knob -->
+        <group>[EffectRack1_EffectUnit1]</group>
+        <key>super1</key>
         <status>0xB6</status>
         <midino>0x17</midino>
         <options> <soft-takeover/> </options>
       </control>
+      <control>
+        <!-- Channel1 Effect Unit 1 -->
+        <group>[EffectRack1_EffectUnit1]</group>
+        <key>group_[Channel1]_enable</key>
+        <status>0x94</status>
+        <midino>0x47</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Channel1 Effect Unit 3 -->
+        <group>[EffectRack1_EffectUnit3]</group>
+        <key>group_[Channel1]_enable</key>
+        <status>0x94</status>
+        <midino>0x48</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- Channel1 Effect Unit 4 -->
+        <group>[EffectRack1_EffectUnit4]</group>
+        <key>group_[Channel1]_enable</key>
+        <status>0x94</status>
+        <midino>0x49</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- Jog Wheel/Platter -->
       <control>
         <!-- Jog Dial (Wheel Side) -->
         <group>[Channel1]</group>
@@ -414,6 +440,39 @@
         <key>beatloop_8_toggle</key>
         <status>0x97</status>
         <midino>0x13</midino>
+        <options> <normal/> </options>
+      </control>
+      <!-- ROLL for Beatloop -->
+      <control>
+        <!-- 1/8 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_0.125_activate</key>
+        <status>0x97</status>
+        <midino>0x50</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1/4 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_0.25_activate</key>
+        <status>0x97</status>
+        <midino>0x51</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1/2 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_0.5_activate</key>
+        <status>0x97</status>
+        <midino>0x52</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
+        <!-- 1 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_1_activate</key>
+        <status>0x97</status>
+        <midino>0x53</midino>
         <options> <normal/> </options>
       </control>
     </controls>
