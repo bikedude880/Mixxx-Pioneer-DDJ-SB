@@ -2,58 +2,66 @@ var PioneerDDJSB = function() { }
 
 PioneerDDJSB.init = function(id)
 {
-	var alpha = 1.0 / 8;
-	
-	PioneerDDJSB.channels = 
-		{	
-			0x00: {},
-			0x01: {},
-		};
+	var ALPHA = 1.0 / 8;
+	var BETA = ALPHA / 32;
+	var JOG_RESOLUTION = 720;
+	var VINYL_SPEED = 33 + 1/3;
+	var NUMBER_OF_ACTIVE_PERFORMANCE_PADS = 4;
+	var SAFE_SCRATCH_TIMEOUT = 20; // 20ms is the minimum allowed here.
 	
 	PioneerDDJSB.settings = 
-		{
-			alpha: alpha,
-			beta: alpha / 32,
-			jogResolution: 720,
-			vinylSpeed: 33 + 1/3,
-			loopIntervals: ['0.03125', '0.0625', '0.125', '0.25', '0.5', '1', '2', '4', '8', '16', '32', '64'],
-			safeScratchTimeout: 20 // 20ms is the minimum allowed here.
-		};
+	{
+		alpha: ALPHA,
+		beta: BETA,
+		jogResolution: JOG_RESOLUTION,
+		vinylSpeed: VINYL_SPEED,
+		numberOfActivePerformancePads: NUMBER_OF_ACTIVE_PERFORMANCE_PADS,
+		safeScratchTimeout: SAFE_SCRATCH_TIMEOUT
+	};
+
+	PioneerDDJSB.channels = 
+	{	
+		0x00: {},
+		0x01: {}
+	};
 		
-	PioneerDDJSB.enumerations = 
-		{
-			rotarySelector:
-				{
-					targets:
-						{
-							libraries: 0,
-							tracklist: 1
-						}
-				},
-			channelGroups:
-				{
-					'[Channel1]': 0x00,
-					'[Channel2]': 0x01,
-				}
-		};
-		
-	PioneerDDJSB.status = 
-		{
-			rotarySelector: 
-				{
-					target: PioneerDDJSB.enumerations.rotarySelector.targets.tracklist
-				}
-		};
+	PioneerDDJSB.channelGroups =
+	{
+		'[Channel1]': 0x00,
+		'[Channel2]': 0x01
+	};
+	
+	PioneerDDJSB.loopIntervals =
+	{
+		PAD1: 1, 
+		PAD2: 2, 
+		PAD3: 4, 
+		PAD4: 8
+	};
+	
+	PioneerDDJSB.rotarySelectorTargets =
+	{
+		libraries: 0,
+		tracklist: 1
+	},
+	
+	// Initialize the Decks and the Library
+	PioneerDDJSB.rotarySelectorMode = 1;
 				
 	PioneerDDJSB.BindControlConnections(false);
-}
+};
+
+PioneerDDJSB.shutdown = function()
+{
+	PioneerDDJSB.BindControlConnections(true);
+};
 
 PioneerDDJSB.BindControlConnections = function(isUnbinding)
 {
 	for (var channelIndex = 1; channelIndex <= 2; channelIndex++)
 	{
 		var channelGroup = '[Channel' + channelIndex + ']';
-	
+		
 		// Play / Pause LED
 		engine.connectControl(channelGroup, 'play', 'PioneerDDJSB.PlayLeds', isUnbinding);
 		
@@ -66,87 +74,107 @@ PioneerDDJSB.BindControlConnections = function(isUnbinding)
 		// Keylock LED
 		engine.connectControl(channelGroup, 'keylock', 'PioneerDDJSB.KeyLockLeds', isUnbinding);
 		
+		// Vinyl LED
+		engine.connectControl(channelGroup, 'slip_enabled', 'PioneerDDJSB.ToggleVinylLed', isUnbinding);
+		
 		// Hook up the hot cue performance pads
-		for (var i = 0; i < 4; i++)
+		for (var i = 0; i < 8; i++)
 		{
 			engine.connectControl(channelGroup, 'hotcue_' + (i + 1) +'_enabled', 'PioneerDDJSB.HotCuePerformancePadLed', isUnbinding);
 		}
 		
 		// Hook up the roll performance pads
-		for (var interval in PioneerDDJSB.settings.loopIntervals)
+		for (var i = 1; i <= PioneerDDJSB.settings['numberOfActivePerformancePads']; i++)
 		{
-			engine.connectControl(channelGroup, 'beatloop_' + interval + '_enabled', 'PioneerDDJSB.RollPerformancePadLed', isUnbinding);
+			engine.connectControl(channelGroup, 'beatloop_' + PioneerDDJSB.loopIntervals['PAD' + i] + '_enabled', 'PioneerDDJSB.RollPerformancePadLed', isUnbinding);
 		}
 	}
 };
 
+///////////////////////////////////////////////////////////////
+//                         LED SECTION                       //
+///////////////////////////////////////////////////////////////
+
 // This handles LEDs related to the PFL / Headphone Cue event.
 PioneerDDJSB.HeadphoneCueLed = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];	
+	var channel = PioneerDDJSB.channelGroups[group];	
 	midi.sendShortMsg(0x90 + channel, 0x54, value ? 0x7F : 0x00); // Headphone Cue LED
 };
 
 // This handles LEDs related to the cue_default event.
 PioneerDDJSB.CueLeds = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];	
+	var channel = PioneerDDJSB.channelGroups[group];	
 	midi.sendShortMsg(0x90 + channel, 0x0C, value ? 0x7F : 0x00); // Cue LED
 };
 
 // This handles LEDs related to the keylock event.
 PioneerDDJSB.KeyLockLeds = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];	
+	var channel = PioneerDDJSB.channelGroups[group];	
 	midi.sendShortMsg(0x90 + channel, 0x1A, value ? 0x7F : 0x00); // Keylock LED
 };
 
 // This handles LEDs related to the play event.
 PioneerDDJSB.PlayLeds = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];	
+	var channel = PioneerDDJSB.channelGroups[group];	
 	midi.sendShortMsg(0x90 + channel, 0x0B, value ? 0x7F : 0x00); // Play / Pause LED
 	midi.sendShortMsg(0x90 + channel, 0x0C, value ? 0x7F : 0x00); // Cue LED
 };
 
-// Lights up the LEDs for beat-loops. Only works with the number 1, 2, 
-// 4 and 8 unfortunately, so 0.5 and 0.125, 16 and 32 will not show up.
-// We work around this by highlighting the pads when you press them, but 
-// if you change the loop interval while still holding the pad, it may not 
-// always reflect.
-PioneerDDJSB.RollPerformancePadLed = function(value, group, control) 
+PioneerDDJSB.ToggleVinylLed = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];
-	
-	var padIndex = 0;
-	for (var i = 0; i < 8; i++)
-	{
-		if (control === 'beatloop_' + PioneerDDJSB.settings.loopIntervals[i + 2] + '_enabled')
-		{
-			break;
-		}
-	
-		padIndex++;
-	}
-	
-	// Toggle the relevant Performance Pad LED
-	midi.sendShortMsg(0x97 + channel, 0x10 + padIndex, value ? 0x7F : 0x00); 
+	var channel = PioneerDDJSB.channelGroups[group];
+	midi.sendShortMsg(0x90 + channel, 0x17, value ? 0x7F : 0x00); // Vinyl LED
 };
 
+
+// Lights up the LEDs for beat-loops. Currently there are 4 pads set.
+// If you want extra pads or want to change the speed, you need to adjust
+// the xml and the enumaration in the config/init setings
+PioneerDDJSB.RollPerformancePadLed = function(value, group, control) 
+{
+	var channel = PioneerDDJSB.channelGroups[group];
+	for (var i = 1; i <= PioneerDDJSB.settings['numberOfActivePerformancePads']; i++)
+	{
+		if (control === 'beatloop_' + PioneerDDJSB.loopIntervals['PAD' + i] + '_enabled')
+		{
+			midi.sendShortMsg(0x97 + channel, 0x10 + (i - 1), value ? 0x7F : 0x00); 
+		}
+	}
+};
+// Lights up the LEDs for the hotcue buttons. The buttons LEDs are disabled
+// using the SHIFT button
 PioneerDDJSB.HotCuePerformancePadLed = function(value, group, control) 
 {
-	var channel = PioneerDDJSB.enumerations.channelGroups[group];
+	var channel = PioneerDDJSB.channelGroups[group];
 	
 	var padIndex = null;
-	
-	for (var i = 0; i < 4; i++)
+	for (var i = 0; i < 8; i++)
 	{
-		if (control === 'hotcue_' + i + '_enabled')
+		if (control == 'hotcue_' + i + '_enabled')
 		{
 			break;
 		}
 		
 		padIndex = i;
+
+		if (padIndex <= 3) {
+			// Pad LED without shift key
+			midi.sendShortMsg(0x97 + channel, 0x00 + padIndex, value ? 0x7F : 0x00);
+
+			// Pad LED with shift key
+			midi.sendShortMsg(0x97 + channel, 0x00 + padIndex + 0x08, value ? 0x7F : 0x00);
+
+		} else {
+			// Pad LED without shift key
+			midi.sendShortMsg(0x97 + channel, 0x40 + padIndex, value ? 0x7F : 0x00);
+
+			// Pad LED with shift key
+			midi.sendShortMsg(0x97 + channel, 0x40 + padIndex + 0x08, value ? 0x7F : 0x00);
+		}
 	}
 	
 	// Pad LED without shift key
@@ -156,12 +184,30 @@ PioneerDDJSB.HotCuePerformancePadLed = function(value, group, control)
 	midi.sendShortMsg(0x97 + channel, 0x00 + padIndex + 0x08, value ? 0x7F : 0x00);
 };
 
+PioneerDDJSB.superknob_deck1 = function(channel, value, group, control)
+{
+	engine.setValue("[EffectRack1_EffectUnit1]", "super1", value);
+	engine.setValue("[EffectRack1_EffectUnit3]", "super1", value);
+	engine.setValue("[EffectRack1_EffectUnit4]", "super1", value);
+};
+
+PioneerDDJSB.superknob_deck2 = function(channel, value, group, control)
+{
+	engine.setValue("[EffectRack1_EffectUnit2]", "super1", value);
+	engine.setValue("[EffectRack1_EffectUnit3]", "super1", value);
+	engine.setValue("[EffectRack1_EffectUnit4]", "super1", value);
+};
+
+///////////////////////////////////////////////////////////////
+//                     JOGWHEEL SECTION                      //
+///////////////////////////////////////////////////////////////
+
 // Work out the jog-wheel change / delta
 PioneerDDJSB.getJogWheelDelta = function(value)
 {
 	// The Wheel control centers on 0x40; find out how much it's moved by.
 	return value - 0x40;
-}
+};
 
 // Toggle scratching for a channel
 PioneerDDJSB.toggleScratch = function(channel, isEnabled)
@@ -171,10 +217,10 @@ PioneerDDJSB.toggleScratch = function(channel, isEnabled)
 	{
         engine.scratchEnable(
 			deck, 
-			PioneerDDJSB.settings.jogResolution, 
-			PioneerDDJSB.settings.vinylSpeed, 
-			PioneerDDJSB.settings.alpha, 
-			PioneerDDJSB.settings.beta);
+			PioneerDDJSB.settings['jogResolution'], 
+			PioneerDDJSB.settings['vinylSpeed'], 
+			PioneerDDJSB.settings['alpha'], 
+			PioneerDDJSB.settings['beta']);
     }
     else 
 	{
@@ -182,65 +228,30 @@ PioneerDDJSB.toggleScratch = function(channel, isEnabled)
     }
 };
 
-// Pitch bend a channel
-PioneerDDJSB.pitchBend = function(channel, movement) 
-{
-	var deck = channel + 1; 
-	var group = '[Channel' + deck +']';
-	
-	// Make this a little less sensitive.
-	movement = movement / 5; 
-	
-	// Limit movement to the range of -3 to 3.
-	movement = movement > 3 ? 3 : movement;
-	movement = movement < -3 ? -3 : movement;
-	
-	engine.setValue(group, 'jog', movement);	
-};
-
-// Schedule disabling scratch. We don't do this immediately on 
-// letting go of the jog wheel, as that result in a pitch-bend.
-// Instead, we set up a time that disables it, but cancel and
-// re-register that timer whenever we need to to postpone the disable.
-// Very much a hack, but it works, and I'm yet to find a better solution.
-PioneerDDJSB.scheduleDisableScratch = function(channel)
-{
-	PioneerDDJSB.channels[channel].disableScratchTimer = engine.beginTimer(
-		PioneerDDJSB.settings.safeScratchTimeout, 
-		'PioneerDDJSB.toggleScratch(' + channel + ', false)', 
-		true);
-};
-
-// If scratch-disabling has been schedule, then unschedule it.
-PioneerDDJSB.unscheduleDisableScratch = function(channel)
-{
-	if (PioneerDDJSB.channels[channel].disableScratchTimer)
-	{
-		engine.stopTimer(PioneerDDJSB.channels[channel].disableScratchTimer);
-	}
-};
-
-// Postpone scratch disabling by a few milliseconds. This is
-// useful if you were scratching, but let of of the jog wheel.
-// Without this, you'd end up with a pitch-bend in that case.
-PioneerDDJSB.postponeDisableScratch = function(channel)
-{
-	PioneerDDJSB.unscheduleDisableScratch(channel);
-	PioneerDDJSB.scheduleDisableScratch(channel);
-};
-
 // Detect when the user touches and releases the jog-wheel while 
 // jog-mode is set to vinyl to enable and disable scratching.
-PioneerDDJSB.jogScratchTouch = function(channel, control, value, status) 
+PioneerDDJSB.jogScratchTouch = function(channel, control, value, status, group) 
 {
-	if (value == 0x7F)
+	var deck = channel + 1; 
+	
+	if (!engine.getValue(group, 'play'))
 	{
-		PioneerDDJSB.unscheduleDisableScratch(channel);	
-		PioneerDDJSB.toggleScratch(channel, true);
+		PioneerDDJSB.toggleScratch(channel, value == 0x7F);
 	}
 	else
 	{
-		PioneerDDJSB.scheduleDisableScratch(channel);
+		var activate = value > 0;
+		
+		if (activate) 
+		{
+			engine.brake(deck, true, 1, 1); // enable brake effect
+			PioneerDDJSB.toggleScratch(channel, true);
+		}
+		else 
+		{
+			engine.brake(deck, false, 1, 1); // disable brake effect
+			PioneerDDJSB.toggleScratch(channel, false);
+		}  
 	}
 };
  
@@ -259,91 +270,87 @@ PioneerDDJSB.jogScratchTurn = function(channel, control, value, status)
 
 // Pitch bend using the jog-wheel, or finish a scratch when the wheel 
 // is still turning after having released it.
-PioneerDDJSB.jogPitchBend = function(channel, control, value, status) 
+PioneerDDJSB.jogPitchBend = function(channel, control, value, status, group) 
 {
+	if (!engine.getValue(group, 'play'))
+		return;
+		
 	var deck = channel + 1; 
-	var group = '[Channel' + deck +']';
-
-	if (engine.isScratching(deck))
-	{
-		engine.scratchTick(deck, PioneerDDJSB.getJogWheelDelta(value));
-		PioneerDDJSB.postponeDisableScratch(channel);
-	}
-	else
-	{	
-		// Only pitch-bend when actually playing
-		if (engine.getValue(group, 'play'))
-		{
-			PioneerDDJSB.pitchBend(channel, PioneerDDJSB.getJogWheelDelta(value));
-		}
-	}
+	PioneerDDJSB.pitchBend(channel, PioneerDDJSB.getJogWheelDelta(value));
 };
 
-// Called when the jog-mode is not set to vinyl, and the jog wheel is touched.
-PioneerDDJSB.jogSeekTouch = function(channel, control, value, status) 
+// Pitch bend a channel
+PioneerDDJSB.pitchBend = function(channel, movement) 
 {
 	var deck = channel + 1; 
 	var group = '[Channel' + deck +']';
 	
-	// Only enable scratching if we're in scratching mode, when user is  
-	// touching the top of the jog-wheel and the 'Vinyl' jog mode is 
-	// selected.
-	if (!engine.getValue(group, 'play'))
-	{
-		// Scratch if we're not playing; otherwise we'll be 
-		// pitch-bending here, which we don't want.
-		PioneerDDJSB.toggleScratch(channel, value == 0x7F);
-	}
+	// Make this a little less sensitive.
+	movement = movement / 5; 
+	
+	// Limit movement to the range of -3 to 3.
+	movement = movement > 3 ? 3 : movement;
+	movement = movement < -3 ? -3 : movement;
+	
+	engine.setValue(group, 'jog', movement);
+};
+
+// Called when the jog-mode is not set to vinyl, and the jog wheel is touched.
+// If we are not playing we want to seek through it and this is done in scratch mode
+PioneerDDJSB.jogSeekTouch = function(channel, control, value, status, group) 
+{
+	if (engine.getValue(group, 'play'))
+		return;
+		
+	var deck = channel + 1; 
+	PioneerDDJSB.toggleScratch(channel, value == 0x7F);
 };
 
 // Call when the jog-wheel is turned. The related jogSeekTouch function 
 // sets up whether we will be scratching or pitch-bending depending 
 // on whether a song is playing or not.
-PioneerDDJSB.jogSeekTurn = function(channel, control, value, status) 
+PioneerDDJSB.jogSeekTurn = function(channel, control, value, status, group) 
 {
+	if (engine.getValue(group, 'play'))
+		return;
+	
 	var deck = channel + 1; 
-	
-    if (engine.isScratching(deck)) 
-	{
-		engine.scratchTick(deck, PioneerDDJSB.getJogWheelDelta(value));
-	}
-	else
-	{
-		PioneerDDJSB.pitchBend(channel, PioneerDDJSB.getJogWheelDelta(value));
-	}
+	engine.scratchTick(deck, PioneerDDJSB.getJogWheelDelta(value));
 };
 
-// This handles the eight performance pads below the jog-wheels 
-// that deal with rolls or beat loops.
-PioneerDDJSB.RollPerformancePad = function(performanceChannel, control, value, status) 
-{
-	var deck = performanceChannel - 6;  
-	var group = '[Channel' + deck +']';
-	var interval = PioneerDDJSB.settings.loopIntervals[control - 0x10 + 2];
-	
-	if (value == 0x7F)
-	{
-		engine.setValue(group, 'beatlooproll_' + interval + '_activate', 1);
-	}
-	else
-	{
-		engine.setValue(group, 'beatlooproll_' + interval + '_activate', 0);
-	}
-	
-	midi.sendShortMsg(0x97 + deck - 1, control, value);
-};
-
+///////////////////////////////////////////////////////////////
+//                     JOGWHEEL SECTION                      //
+///////////////////////////////////////////////////////////////
 // Handles the rotary selector for choosing tracks, library items, crates, etc.
 PioneerDDJSB.RotarySelector = function(channel, control, value, status) 
 {
-	if (value >= 0x01 && value <= 0x1e) {
-		value = value;
-	} else if (value >= 0x62 && value <= 0x7f) {
-		value = 0 - (0x7f-value+1);
-	} else {
-		return;
+	var delta = 0x40 - Math.abs(0x40 - value);
+	var isCounterClockwise = value > 0x40;
+	if (isCounterClockwise)
+	{
+		delta *= -1;
 	}
-	engine.setValue('[Playlist]', 'SelectTrackKnob', value);
+	
+	var tracklist = PioneerDDJSB.rotarySelectorTargets.tracklist;
+	var libraries = PioneerDDJSB.rotarySelectorTargets.libraries;
+	
+	switch(PioneerDDJSB.rotarySelectorMode)
+	{
+		case tracklist:
+			engine.setValue('[Playlist]', 'SelectTrackKnob', delta);
+			break;
+		case libraries:
+			if (delta > 0)
+			{
+				engine.setValue('[Playlist]', 'SelectNextPlaylist', 1);
+			}
+			else if (delta < 0)
+			{
+				engine.setValue('[Playlist]', 'SelectPrevPlaylist', 1);
+			}
+			
+			break;
+	}
 };
 
 PioneerDDJSB.RotarySelectorClick = function(channel, control, value, status) 
@@ -351,26 +358,24 @@ PioneerDDJSB.RotarySelectorClick = function(channel, control, value, status)
 	// Only trigger when the button is pressed down, not when it comes back up.
 	if (value == 0x7F)
 	{
-		var target = PioneerDDJSB.enumerations.rotarySelector.targets.tracklist;
-		
-		var tracklist = PioneerDDJSB.enumerations.rotarySelector.targets.tracklist;
-		var libraries = PioneerDDJSB.enumerations.rotarySelector.targets.libraries;
-		
-		switch(PioneerDDJSB.status.rotarySelector.target)
+		if (PioneerDDJSB.rotarySelectorMode == 0) // library
 		{
-			case tracklist:
-				target = libraries;
-				break;
-			case libraries:
-				target = tracklist;
-				break;
+			if(engine.getValue('[Playlist]', 'ToggleSelectedSidebarItem') == 1)
+				engine.setValue('[Playlist]', 'ToggleSelectedSidebarItem', 0);
+			else
+				engine.setValue('[Playlist]', 'ToggleSelectedSidebarItem', 1);
 		}
-		
-		PioneerDDJSB.status.rotarySelector.target = target;
 	}
 };
 
-PioneerDDJSB.shutdown = function()
+PioneerDDJSB.backClick = function(channel, control, value, status)
 {
-	PioneerDDJSB.BindControlConnections(true);
+	// Only trigger when the button is pressed down, not when it comes back up.
+	if (value == 0x7F)
+	{
+		if (PioneerDDJSB.rotarySelectorMode == 1)
+			PioneerDDJSB.rotarySelectorMode = 0;
+		else
+			PioneerDDJSB.rotarySelectorMode = 1;
+	}
 };
