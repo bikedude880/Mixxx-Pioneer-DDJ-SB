@@ -167,11 +167,43 @@
       </control>
       <!-- Effects buttons and knobs -->
       <control>
-        <!-- HPF/LPF for Effect 1 Super Knob -->
-        <group>[EffectRack1_EffectUnit1]</group>
-        <key>super1</key>
+        <!-- Deck 1 Filter -->
+        <group>[Channel1]</group>
+        <key>pitch</key>
         <status>0xB6</status>
         <midino>0x17</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect Knob for Gain -->
+        <group>[Channel1]</group>
+        <key>pregain</key>
+        <status>0xB4</status>
+        <midino>0x00</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 1 Super -->
+        <group>[EffectRack1_EffectUnit1]</group>
+        <key>super1</key>
+        <status>0xB4</status>
+        <midino>0x02</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 3 Super -->
+        <group>[EffectRack1_EffectUnit3]</group>
+        <key>super1</key>
+        <status>0xB4</status>
+        <midino>0x04</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 4 Super -->
+        <group>[EffectRack1_EffectUnit4]</group>
+        <key>super1</key>
+        <status>0xB4</status>
+        <midino>0x06</midino>
         <options> <soft-takeover/> </options>
       </control>
       <control>
@@ -444,11 +476,19 @@
       </control>
       <!-- ROLL for Beatloop -->
       <control>
+        <!-- 1/16 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_0.0625_activate</key>
+        <status>0x97</status>
+        <midino>0x50</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
         <!-- 1/8 Beat Roll -->
         <group>[Channel1]</group>
         <key>beatlooproll_0.125_activate</key>
         <status>0x97</status>
-        <midino>0x50</midino>
+        <midino>0x51</midino>
         <options> <normal/> </options>
       </control>
       <control>
@@ -456,21 +496,13 @@
         <group>[Channel1]</group>
         <key>beatlooproll_0.25_activate</key>
         <status>0x97</status>
-        <midino>0x51</midino>
+        <midino>0x52</midino>
         <options> <normal/> </options>
       </control>
       <control>
         <!-- 1/2 Beat Roll -->
         <group>[Channel1]</group>
         <key>beatlooproll_0.5_activate</key>
-        <status>0x97</status>
-        <midino>0x52</midino>
-        <options> <normal/> </options>
-      </control>
-      <control>
-        <!-- 1 Beat Roll -->
-        <group>[Channel1]</group>
-        <key>beatlooproll_1_activate</key>
         <status>0x97</status>
         <midino>0x53</midino>
         <options> <normal/> </options>
@@ -582,15 +614,47 @@
       </control>
       <!-- Effects buttons and knobs -->
       <control>
-        <!-- HPF/LPF for Effect 2 Super Knob -->
-        <group>[EffectRack1_EffectUnit2]</group>
-        <key>super1</key>
+        <!-- Deck 2 Pitch -->
+        <group>[Channel2]</group>
+        <key>pitch</key>
         <status>0xB6</status>
         <midino>0x18</midino>
         <options> <soft-takeover/> </options>
       </control>
       <control>
-        <!-- Channel2 Effect Unit 2 -->
+        <!-- Effect Knob for Gain -->
+        <group>[Channel2]</group>
+        <key>pregain</key>
+        <status>0xB5</status>
+        <midino>0x00</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 2 Super -->
+        <group>[EffectRack1_EffectUnit2]</group>
+        <key>super1</key>
+        <status>0xB5</status>
+        <midino>0x02</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 3 Super -->
+        <group>[EffectRack1_EffectUnit3]</group>
+        <key>super1</key>
+        <status>0xB5</status>
+        <midino>0x04</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Effect 1 Unit 4 Super -->
+        <group>[EffectRack1_EffectUnit4]</group>
+        <key>super1</key>
+        <status>0xB5</status>
+        <midino>0x06</midino>
+        <options> <soft-takeover/> </options>
+      </control>
+      <control>
+        <!-- Channel2 Effect Unit 1 -->
         <group>[EffectRack1_EffectUnit2]</group>
         <key>group_[Channel2]_enable</key>
         <status>0x95</status>
@@ -654,7 +718,7 @@
         <midino>0x36</midino>
         <options> <script-binding/> </options>
       </control>
-      <!-- HOT CUE Deck 2 -->
+      <!-- HOT CUE Deck 1 -->
       <control>
         <!-- Hotcue 1 Set -->
         <group>[Channel2]</group>
@@ -859,11 +923,19 @@
       </control>
       <!-- ROLL for Beatloop -->
       <control>
+        <!-- 1/16 Beat Roll -->
+        <group>[Channel1]</group>
+        <key>beatlooproll_0.0625_activate</key>
+        <status>0x98</status>
+        <midino>0x50</midino>
+        <options> <normal/> </options>
+      </control>
+      <control>
         <!-- 1/8 Beat Roll -->
         <group>[Channel2]</group>
         <key>beatlooproll_0.125_activate</key>
         <status>0x98</status>
-        <midino>0x50</midino>
+        <midino>0x51</midino>
         <options> <normal/> </options>
       </control>
       <control>
@@ -871,22 +943,13 @@
         <group>[Channel2]</group>
         <key>beatlooproll_0.25_activate</key>
         <status>0x98</status>
-        <midino>0x51</midino>
+        <midino>0x52</midino>
         <options> <normal/> </options>
       </control>
       <control>
         <!-- 1/2 Beat Roll -->
         <group>[Channel2]</group>
         <key>beatlooproll_0.5_activate</key>
-        <status>0x98</status>
-        <midino>0x52</midino>
-        <options> <normal/> </options>
-      </control>
-      <control>
-        <!-- 1 Beat Roll -->
-        <group>[Channel2]</group>
-        <key>beatlooproll_1_activate</key>
-        <status>0x98</status>
         <midino>0x53</midino>
         <options> <normal/> </options>
       </control>
