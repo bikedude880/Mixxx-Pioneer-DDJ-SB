@@ -924,7 +924,7 @@
       <!-- ROLL for Beatloop -->
       <control>
         <!-- 1/16 Beat Roll -->
-        <group>[Channel1]</group>
+        <group>[Channel2]</group>
         <key>beatlooproll_0.0625_activate</key>
         <status>0x98</status>
         <midino>0x50</midino>
@@ -950,6 +950,7 @@
         <!-- 1/2 Beat Roll -->
         <group>[Channel2]</group>
         <key>beatlooproll_0.5_activate</key>
+        <status>0x98</status>
         <midino>0x53</midino>
         <options> <normal/> </options>
       </control>
